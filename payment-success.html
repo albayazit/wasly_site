@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Оплата принята — Wasly</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="assets/favicon/favicon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --paper: #FFFFFF;
+    --ink: #2C2C2A;
+    --ink-2: #6B6B66;
+    --hair: #EDEDE5;
+    --green: #047857;
+    --green-2: #036549;
+    --green-soft: #C5DDD0;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    background: var(--bg); color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: grid; place-items: center;
+    padding: 24px;
+  }
+  .card {
+    width: 100%; max-width: 460px;
+    background: var(--paper);
+    border: 1px solid var(--hair);
+    border-radius: 28px;
+    padding: 48px 36px;
+    text-align: center;
+    box-shadow: 0 30px 60px -30px rgba(20,18,10,.18);
+  }
+  .check {
+    width: 76px; height: 76px; margin: 0 auto 28px;
+    border-radius: 50%;
+    background: var(--green-soft);
+    display: grid; place-items: center;
+  }
+  .check svg { width: 38px; height: 38px; color: var(--green); }
+  h1 { font-size: 26px; font-weight: 700; letter-spacing: -.02em; margin: 0 0 12px; }
+  p { color: var(--ink-2); font-size: 16px; margin: 0 auto; max-width: 340px; }
+  .button {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--green); color: #fff;
+    padding: 15px 30px; border-radius: 999px;
+    text-decoration: none; font-weight: 600; font-size: 15px;
+    margin-top: 32px;
+    transition: background .2s ease, transform .2s ease;
+  }
+  .button:hover { background: var(--green-2); transform: translateY(-1px); }
+  .hint { margin-top: 18px; font-size: 13.5px; color: var(--ink-2); }
+  .hint a { color: var(--green); text-decoration: none; font-weight: 600; }
+  .hint a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="check">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+    </div>
+    <h1>Оплата принята</h1>
+    <p>Спасибо! Wasly Premium активен. Вернитесь в приложение, чтобы продолжить.</p>
+    <a class="button" href="wasly://payment-return">Открыть приложение</a>
+    <div class="hint">Приложение не открылось? <a href="https://wasly.app">На главную</a></div>
+  </main>
+</body>
+</html>
