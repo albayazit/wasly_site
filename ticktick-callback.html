@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Подключение TickTick — Wasly</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --paper: #FFFFFF;
+    --ink: #2C2C2A;
+    --ink-2: #6B6B66;
+    --hair: #EDEDE5;
+    --green: #047857;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--hair);
+    border-radius: 20px;
+    padding: 36px 28px;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+  }
+  h1 { font-size: 20px; font-weight: 700; margin: 0 0 8px; }
+  p { font-size: 14px; color: var(--ink-2); line-height: 1.5; margin: 0 0 20px; }
+  a.btn {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 13px 26px;
+    border-radius: 14px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Возвращаемся в Wasly…</h1>
+    <p id="msg">Завершаем подключение TickTick.</p>
+    <a class="btn" id="open" href="#">Открыть Wasly</a>
+  </div>
+  <script>
+    // OAuth redirect bridge: TickTick can't redirect straight to a custom
+    // URL scheme, so it lands here and we bounce code+state into the app.
+    (function () {
+      var q = new URLSearchParams(location.search);
+      var code = q.get('code');
+      var state = q.get('state') || '';
+      var link = document.getElementById('open');
+      if (!code) {
+        document.getElementById('msg').textContent =
+          'Не удалось получить код авторизации. Вернитесь в приложение и попробуйте ещё раз.';
+        link.style.display = 'none';
+        return;
+      }
+      var target = 'wasly://ticktick-callback?code=' +
+        encodeURIComponent(code) + '&state=' + encodeURIComponent(state);
+      link.href = target;
+      location.replace(target);
+    })();
+  </script>
+</body>
+</html>
